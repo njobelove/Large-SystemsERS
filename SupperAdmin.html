@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP System - Dashboard</title>
+    <link rel="stylesheet" href="SupperAdmin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>ERP System</span>
+                </div>
+                <button class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="header-center">
+                <div class="module-tabs">
+                    <button class="tab active" data-module="all">Dashboard</button>
+                    <button class="tab" data-module="academic">Academic</button>
+                    <button class="tab" data-module="finance">Marketing & Finance</button>
+                    <button class="tab" data-module="hr">Admin & HR</button>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="notifications">
+                    <button class="icon-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=User&background=4361ee&color=fff" alt="User" id="user-avatar">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name" id="dashboard-username">User Name</span>
+                        <span class="user-role" id="dashboard-role">Administrator</span>
+                    </div>
+                    <button class="logout-btn" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h3>Main</h3>
+                        <a href="#" class="nav-link active">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Overview</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Calendar</span>
+                        </a>
+                    </div>
+                    
+                    <div class="nav-section">
+                        <h3>Academic</h3>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-book"></i>
+                            <span>Courses</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>Students</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Faculty</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>Exams</span>
+                        </a>
+                    </div>
+                    
+                    <div class="nav-section">
+                        <h3>Finance</h3>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Tuition Fees</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Financial Reports</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Marketing</span>
+                        </a>
+                    </div>
+                    
+                    <div class="nav-section">
+                        <h3>Admin & HR</h3>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-users"></i>
+                            <span>Employees</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-money-check"></i>
+                            <span>Payroll</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-business-time"></i>
+                            <span>Leave Management</span>
+                        </a>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-cube"></i>
+                            <span>Assets</span>
+                        </a>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content">
+                <div class="page-header">
+                    <h1>Dashboard Overview</h1>
+                    <div class="breadcrumb">
+                        <span>Home</span> / <span>Dashboard</span>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card academic">
+                        <div class="stat-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>2,458</h3>
+                            <p>Total Students</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card finance">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>$186,500</h3>
+                            <p>Revenue This Month</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card hr">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>143</h3>
+                            <p>Total Employees</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card info">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>92%</h3>
+                            <p>System Performance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts and Data Section -->
+                <div class="data-section">
+                    <div class="chart-container">
+                        <div class="section-header">
+                            <h2>Enrollment Statistics</h2>
+                            <select class="period-select">
+                                <option>Last 7 Days</option>
+                                <option>Last 30 Days</option>
+                                <option>Last 90 Days</option>
+                            </select>
+                        </div>
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-bar"></i>
+                            <p>Enrollment chart would be displayed here</p>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-activities">
+                        <div class="section-header">
+                            <h2>Recent Activities</h2>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="activities-list">
+                            <div class="activity-item">
+                                <div class="activity-icon academic">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>New Course Added</h4>
+                                    <p>Advanced Software Engineering course has been added to the curriculum</p>
+                                    <span class="activity-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon finance">
+                                    <i class="fas fa-money-check"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Tuition Payment Received</h4>
+                                    <p>Student ID #3847 has paid the semester tuition fee</p>
+                                    <span class="activity-time">5 hours ago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon hr">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>New Employee Onboarded</h4>
+                                    <p>Sarah Johnson joined as a new Finance Manager</p>
+                                    <span class="activity-time">Yesterday</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modules Status -->
+                <div class="modules-status">
+                    <div class="section-header">
+                        <h2>Module Status</h2>
+                    </div>
+                    <div class="modules-grid">
+                        <div class="module-status-card academic">
+                            <div class="module-header">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h3>Academic Module</h3>
+                            </div>
+                            <p>Course Management, Student Tracking, Exam Scheduling</p>
+                            <div class="status-indicator active">Active</div>
+                        </div>
+                        
+                        <div class="module-status-card finance">
+                            <div class="module-header">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>Finance Module</h3>
+                            </div>
+                            <p>Fee Management, Financial Reporting, Campaign Tracking</p>
+                            <div class="status-indicator active">Active</div>
+                        </div>
+                        
+                        <div class="module-status-card hr">
+                            <div class="module-header">
+                                <i class="fas fa-users"></i>
+                                <h3>HR Module</h3>
+                            </div>
+                            <p>Employee Management, Payroll, Leave Tracking</p>
+                            <div class="status-indicator warning">Maintenance</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get user data from localStorage
+        const username = localStorage.getItem('erp_username') || 'User';
+        const role = localStorage.getItem('erp_role') || 'admin';
+        
+        // Set user info in dashboard
+        document.getElementById('dashboard-username').textContent = username;
+        document.getElementById('dashboard-role').textContent = 
+            role === 'student' ? 'Student' : 
+            role === 'staff' ? 'Faculty Member' : 'Administrator';
+        
+        // Generate avatar based on username
+        document.getElementById('user-avatar').src = 
+            `https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=4361ee&color=fff`;
+        
+        // Logout functionality
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            localStorage.removeItem('erp_username');
+            localStorage.removeItem('erp_role');
+            window.location.href = 'login.html';
+        });
+        
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // In a real app, this would load the appropriate module content
+                console.log('Switched to module:', this.dataset.module);
+            });
+        });
+        
+        // Sidebar toggle for mobile
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        sidebarToggle.addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
