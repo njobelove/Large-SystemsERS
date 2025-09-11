@@ -1,0 +1,7 @@
+<?php
+// File: c:\xampp\htdocs\school\finance\include\footer.php
+?>
+    </main> <!-- .main-content -->
+</div> <!-- .finance-container -->
+</body>
+</html>

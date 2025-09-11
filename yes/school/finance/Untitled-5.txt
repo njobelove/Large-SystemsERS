@@ -1,0 +1,102 @@
+<?php
+// File: c:\xampp\htdocs\school\finance\list_submissions.php
+include '../include/auth_check.php';
+checkRoleAccess(['finance', 'admin']);
+include '../include/db_connect.php';
+
+// Fetch submissions with student and invoice info
+$sql = "SELECT 
+            ps.id, 
+            ps.status, 
+            ps.created_at, 
+            ps.receipt_path,
+            u.username AS student_name,
+            i.id AS invoice_id,
+            i.amount AS invoice_amount
+        FROM payment_submissions ps
+        JOIN users u ON ps.student_id = u.id
+        JOIN invoices i ON ps.invoice_id = i.id
+        ORDER BY ps.created_at DESC";
+
+$result = $conn->query($sql);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Submissions</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .status-pending { font-weight: bold; color: #fd7e14; }
+        .status-approved { font-weight: bold; color: #28a745; }
+        .status-rejected { font-weight: bold; color: #dc3545; }
+        .receipt-thumbnail { max-width: 80px; max-height: 80px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px; }
+        .receipt-thumbnail:hover { border-color: #007bff; }
+    </style>
+</head>
+<body>
+<?php include '../include/header.php'; ?>
+
+<div class="container">
+    <h2>Payment Submissions</h2>
+
+    <?php if (isset($_GET['message'])): ?>
+        <div class="message success"><?= htmlspecialchars($_GET['message']) ?></div>
+    <?php endif; ?>
+    <?php if (isset($_GET['error'])): ?>
+        <div class="message error"><?= htmlspecialchars($_GET['error']) ?></div>
+    <?php endif; ?>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student</th>
+                <th>Invoice ID</th>
+                <th>Invoice Amount</th>
+                <th>Submitted At</th>
+                <th>Status</th>
+                <th>Receipt</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if ($result && $result->num_rows > 0): ?>
+                <?php while ($row = $result->fetch_assoc()): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($row['id']) ?></td>
+                        <td><?= htmlspecialchars($row['student_name']) ?></td>
+                        <td><a href="edit_invoice.php?id=<?= $row['invoice_id'] ?>"><?= htmlspecialchars($row['invoice_id']) ?></a></td>
+                        <td>€<?= htmlspecialchars(number_format($row['invoice_amount'], 2)) ?></td>
+                        <td><?= htmlspecialchars($row['created_at']) ?></td>
+                        <td>
+                            <span class="status-<?= htmlspecialchars(strtolower($row['status'])) ?>">
+                                <?= htmlspecialchars(ucfirst($row['status'])) ?>
+                            </span>
+                        </td>
+                        <td>
+                            <a href="../uploads/receipts/<?= htmlspecialchars($row['receipt_path']) ?>" target="_blank">
+                                <img src="../uploads/receipts/<?= htmlspecialchars($row['receipt_path']) ?>" alt="Receipt" class="receipt-thumbnail">
+                            </a>
+                        </td>
+                        <td>
+                            <?php if ($row['status'] === 'pending'): ?>
+                                <a href="review_submission.php?id=<?= $row['id'] ?>" class="button">Review</a>
+                            <?php else: ?>
+                                <span>Reviewed</span>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="8">No payment submissions found.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+    <p><a href="dashboard.php">Back to Finance Dashboard</a></p>
+</div>
+
+</body>
+</html>
