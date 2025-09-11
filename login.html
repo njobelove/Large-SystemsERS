@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP System - Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>ERP System</h1>
+            <p>Integrated Academic, Finance & HR Management</p>
+        </div>
+        
+        <div class="login-form">
+            <h2>Login to Your Account</h2>
+            
+            <div class="form-group">
+                <label for="username">Username</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="Enter your username">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="role">Login as</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user-tag"></i>
+                    <select id="role">
+                        <option value="student">Student</option>
+                        <option value="staff">Staff</option>
+                        <option value="admin">Administrator</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="login-btn" id="login-btn">Login to Dashboard</button>
+            
+            <div class="login-footer">
+                <p>Forgot your password? <a href="#">Reset here</a></p>
+                <p>New to the system? <a href="#">Contact administrator</a></p>
+            </div>
+        </div>
+        
+        <div class="system-info">
+            <h3>ERP System Modules</h3>
+            <div class="modules">
+                <div class="module academic">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>Academic</h4>
+                    <p>Course management, student tracking, and exam scheduling</p>
+                </div>
+                <div class="module finance">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Marketing & Finance</h4>
+                    <p>Fee management, financial reporting, and campaign tracking</p>
+                </div>
+                <div class="module hr">
+                    <i class="fas fa-users"></i>
+                    <h4>Admin & HR</h4>
+                    <p>Employee management, payroll, and leave tracking</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-btn').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+            
+            if (username && password) {
+                // Store user data for dashboard
+                localStorage.setItem('erp_username', username);
+                localStorage.setItem('erp_role', role);
+                
+                // Redirect to dashboard
+                window.location.href = 'SupperAdmin.html';
+            } else {
+                alert('Please enter both username and password');
+            }
+        });
+        
+        // Allow form submission on Enter key
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('login-btn').click();
+            }
+        });
+    </script>
+</body>
+</html>
